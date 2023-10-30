@@ -1,0 +1,34 @@
+Write a Python CLI program that reads in a .txt file, which contains a SIP request following the format of RFC3261 (see the attached example file 'sip_request.txt').
+Example: 'python -m parse_request.py <option> <path-to-sip-file>/<file-name>.txt'
+The CLI program shall support the following command line options:
+a) '-p --print': The .txt file is parsed and the following message is printed:
+       """
+       The given SIP message is a request with:
+       request-uri: <request-uri>
+       method: <method>
+       headers:
+          <header-1>: <header-1-content>
+          <header-1>: <header-1-content>
+          <...>: <...>
+       and body:
+          <raw-body>
+       """
+
+b) '-e --exists <header-name>': The .txt file is parsed and the program prints whether the given header exists and what its contents are
+    Note: Headers in SIP are case-insensitive and so must be <header-name>
+
+c) '-v --validate': The .txt file is parsed and the request should be checked for compliance with the RFC3261 Sections 8.1.1, 8.1.1.1, 
+   8.1.1.2 and 8.1.1.3. In case no issues are found, such as with the attached example file 'sip_request.txt', the following 
+   message should be printed:
+      """
+      The request has been verified and no issues were found. 
+      """
+   If an issue is found, such as the Call-ID missing in violation of RFC3261 Section 8.1.1 in the attached example file
+   'sip_request_without_call_id.txt', an error similar to the one shown below should be printed:
+      """
+      The verification of the request failed due to the following reason(s):
+      Error: The "Call ID" header is missing, as required by "RFC3261 Section 8.1.1"  
+      """
+   Once your program is ready, please pass the test inputs 'test_input_1.txt', 'test_input_2.txt', 'test_input_3.txt' and share the results for these with us along with your program.
+
+Reference: https://rfc-editor.org/rfc/rfc3261

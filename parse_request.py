@@ -26,6 +26,9 @@ class clirequestParser():
                             the sip header is checked in a file")
         args = parser.parse_args()
 
+        if args.validate is None and args.print is None and args.exists is None:
+            parser.error('One of option is mandatory, Use --help option  ..')
+
         fpath = ''
         if args.validate:
             fpath = args.validate[0]
@@ -34,6 +37,7 @@ class clirequestParser():
         if args.exists:
             fpath = args.exists[-1]
 
+        # pdb.set_trace()
         self.filepath = os.path.join(str(DIRPATH), fpath)
         self.args = args
 

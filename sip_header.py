@@ -1,8 +1,7 @@
-import pdb
 import re
 
 
-class headerLine():  # Replace with sipheader
+class headerLine():
     def __init__(self):
         self.headername = ''
         self.value = ''

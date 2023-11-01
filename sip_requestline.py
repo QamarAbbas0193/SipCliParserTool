@@ -1,4 +1,3 @@
-import pdb
 import re
 
 
@@ -30,7 +29,10 @@ class sipRequestline():
         if match:
             uri = match.group(0)
         else:
-            print("Invalid 'To' header format.")
+            msg = f"""
+            The verification of the request failed due to the following reason(s):
+            Error: The To Header is not as per the requirement of "RFC3261 Section 8.1.1.3"
+            """
 
         if self.ruri in uri and self.method != 'REGISTER':
             pass

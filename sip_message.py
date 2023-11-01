@@ -1,7 +1,6 @@
-from sip_requestline import sipRequestline
-from sip_header import headerLine
 from sip_bodyline import BodyLine
-import pdb
+from sip_header import headerLine
+from sip_requestline import sipRequestline
 
 MANDATORY_HEADERS = ("to", "from", "cseq", "call-id", "max-forwards", "via")
 
@@ -106,7 +105,6 @@ class sipMessage():
 
         msg = msg + """
         and body:"""
-        # pdb.set_trace()
         for line in self.bodylist:
             msg = msg + line.getBodyLine()
 
